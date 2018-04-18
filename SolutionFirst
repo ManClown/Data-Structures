@@ -3,7 +3,7 @@ import java.math.*;
 import java.text.*;
 import java.util.*;
 import java.util.regex.*;
-
+//加了解决思路
 public class Solution{
          //Look here!!!!!!!!!!!!!
         static int[] reverseArray(int[] a){
