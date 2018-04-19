@@ -1,0 +1,48 @@
+import java.io.*;
+import java.math.*;
+import java.text.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    /*
+     * Complete the array2D function below.
+     */
+    static int array2D(int[][] arr) {
+        int largest = -64;
+        int sum;
+        for(int i = 1; i <= 4; ++i){
+            for(int j = 1; j <= 4; ++j){
+                sum = arr[i][j] + arr[i-1][j] + arr[i-1][j-1] + arr[i-1][j+1] + arr[i+1][j] + arr[i+1][j+1] + arr[i+1][j-1];
+                if(sum > largest)
+                    largest = sum;
+            }
+        }
+        return largest;
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int[][] arr = new int[6][6];
+
+        for (int arrRowItr = 0; arrRowItr < 6; arrRowItr++) {
+            String[] arrRowItems = scanner.nextLine().split(" ");
+
+            for (int arrColumnItr = 0; arrColumnItr < 6; arrColumnItr++) {
+                int arrItem = Integer.parseInt(arrRowItems[arrColumnItr].trim());
+                arr[arrRowItr][arrColumnItr] = arrItem;
+            }
+        }
+
+        int result = array2D(arr);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();
+    }
+}
